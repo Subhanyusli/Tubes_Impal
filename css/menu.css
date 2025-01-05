@@ -1,0 +1,252 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #55d8b9, #4c4b7f);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    margin-top: 0 0 0 0 ;
+    padding: 0 0 0 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: #fcfeff;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    
+}
+
+.nav-links li:hover{
+    background: #18dff5;
+}
+
+.nav-links li {
+    margin-left: 1.5em;
+   
+    
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #000;
+}
+
+.menu-item {
+    text-align: center;
+    cursor: pointer;
+}
+.menu_selection {
+    display: flex;
+    flex-direction: row;
+    gap: 30px; /* Jarak antar item */
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 500px; /* Membatasi lebar maksimal */
+}
+
+/* Styling untuk item dalam menu selection */
+.menu_selection .menu-item {
+    background: transparent; /* Menghilangkan background biru */
+    box-shadow: none; /* Menghilangkan shadow */
+    padding: 0px;
+    width: auto; /* Mengatur lebar secara otomatis */
+}
+
+/* Styling untuk gambar dalam menu selection */
+.menu_selection .menu-item img {
+    width: 100px; /* Ukuran lebih kecil */
+    height: 100px; /* Ukuran lebih kecil */
+    border-radius: 50%;
+    margin-bottom: 5px;
+    border: none; /* Menghilangkan border */
+}
+
+/* Styling untuk text dalam menu selection */
+.menu_selection .menu-item p {
+    font-size: 0.8em;
+    margin: 5px 0 0 0;
+    color: #333; /* Warna text yang lebih gelap */
+}
+
+/* Hover effect */
+.menu_selection .menu-item:hover img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+.menu-item img  {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    transition: transform 0.3s;
+
+}
+
+.menu-item img:hover {
+    transform: scale(1.1);
+}
+
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.menu-item {
+    background-color:  rgb(12, 182, 224);
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 15px;
+}
+
+.menu-item img {
+    
+    width: 100%;
+    height: auto;
+    border-bottom: 4px solid #660000;
+}
+
+.menu-item h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+.menu-item p {
+    font-size: 0.9em;
+    margin: 10px 0;
+}
+
+.menu-item span {
+    font-size: 1.1em;
+    font-weight: bold;
+    display: block;
+    margin: 10px 0;
+}
+
+.menu-item button {
+    background-color: #ff4500;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.menu-item button:hover {
+    background-color: #e63e00;
+}
+
+.sign-up {
+    background-color: #ff6666;
+}
+
+.log-in {
+    background-color: #333;
+}
+
+.pizza-image {
+    max-width: 50%;
+    border-radius: 50% ;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    
+    
+}
+/* Tambahkan ini ke menu.css */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    z-index: 1000;
+    animation: slideIn 0.5s ease-out;
+}
+
+.notification.success {
+    background-color: #4CAF50;
+}
+
+.notification.error {
+    background-color: #f44336;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; 
+    }
+    .menu-item {
+        width: 100%;    
+    }
+    
+    .image {
+        margin-top: 2rem;
+ 
+    }
+    .menu-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Lebih kecil untuk tablet */
+    }
+    .menu-container {
+        grid-template-columns: 1fr; /* Hanya satu kolom untuk layar kecil */
+    }
+
+    .menu-item {
+        padding: 10px; /* Sesuaikan padding */
+    }
+
+    .menu-item img {
+        height: 150px; /* Sesuaikan tinggi gambar */
+        object-fit: cover; /* Pastikan gambar tidak terdistorsi */
+    }
+}

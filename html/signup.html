@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../css/signup.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <p>Welcome<br>By signing up, you agree to our <a href="#">Terms and Privacy Policy</a>.</p>
+        <form id="signupForm">
+            <input type="text" name="username" placeholder="Full Name" required maxlength="50">
+            <input type="text" name="nomor_telepon" placeholder="Phone Number" required maxlength="20">
+            <input type="email" name="email" placeholder="Email" required maxlength="50">
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+            <button type="submit" class="btn-submit">Sign Up</button>
+        </form>
+        <br />
+            <a href="../html/login.html" class="forgot-password">Sudah punya akun?</a>
+        <div id="message" style="color: red; margin-top: 10px;"></div>
+    </div>
+    <script>
+        const signupForm = document.getElementById('signupForm');
+        const messageDiv = document.getElementById('message');
+
+        signupForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Mencegah reload halamand
+
+            // Ambil data form
+            const formData = new FormData(signupForm);
+
+            try {
+                // Kirim data menggunakan Fetch API
+                const response = await fetch('../php/signup.php', {
+                    method: 'POST',
+                    body: formData,
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    // Jika berhasil, arahkan ke halaman home
+                    messageDiv.style.color = 'green';
+                    messageDiv.textContent = result.message;
+                    setTimeout(() => {
+                        window.location.href = '../html/login.html';
+                    }, 1500); // Tunggu 1.5 detik sebelum redirect
+                } else {
+                    // Tampilkan pesan error jika gagal
+                    messageDiv.style.color = 'red';
+                    messageDiv.textContent = result.message;
+                }
+            } catch (error) {
+                // Jika terjadi error jaringan atau server
+                messageDiv.style.color = 'red';
+                messageDiv.textContent = 'Terjadi kesalahan. Coba lagi nanti.';
+            }
+        });
+    </script>
+</body>
+</html>
